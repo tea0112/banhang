@@ -1,0 +1,20 @@
+{
+  "env": {
+    "browser": true
+  },
+  "extends": ["airbnb", "prettier"],
+  "plugins": ["prettier"],
+  "parserOptions": {
+    "parser": "babel-eslint",
+    "sourceType": "module",
+    "allowImportExportEverywhere": true
+  },
+  "rules": {
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "import/no-named-as-default": 0,
+    "import/no-named-as-default-member": 0,
+    "import/no-unresolved": "off",
+    "arrow-body-style": "off",
+    "react/prop-types": "off"
+  }
+}
