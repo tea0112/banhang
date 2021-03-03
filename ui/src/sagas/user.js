@@ -2,9 +2,9 @@ import axios from 'axios';
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { SET_CREDENTIALS } from '../constants/ActionTypes';
 
-const getCredentials = () => {
+const getCredentials = async () => {
   const token = localStorage.getItem('token');
-  const data = axios('/api/v1/nguoidung', {
+  const data = await axios('/api/v1/nguoidung', {
     headers: {
       Authorization: token,
     },

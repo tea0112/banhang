@@ -10,7 +10,6 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import storage from 'redux-persist/lib/storage';
 import reportWebVitals from './reportWebVitals';
 import App from './App';
-import 'bootswatch/dist/lux/bootstrap.min.css';
 import rootReducer from './reducers';
 import rootSaga from './sagas';
 

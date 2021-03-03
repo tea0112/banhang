@@ -6,8 +6,10 @@ const danhMucSchema = mongoose.Schema({
     required: [true, 'must have ten'],
     unique: true,
   },
-  parent: {
+  url: {
     type: String,
+    required: [true, 'must have url'],
+    unique: true,
   },
 });
 

@@ -17,34 +17,12 @@ exports.add = (req, res) => {
     });
 };
 
-exports.getAllParent = async (req, res) => {
+exports.getAll = async (req, res) => {
   try {
-    const danhMucs = await DanhMuc.find({
-      parent: { $exists: false },
-    });
+    const danhMucs = await DanhMuc.find({});
     res.status(200).json(danhMucs);
   } catch (error) {
     res.status(401).json({
-      error,
-    });
-  }
-};
-
-exports.getAllChild = async (req, res) => {
-  try {
-    const havingParent = await DanhMuc.find({
-      ten: req.body.parent,
-    });
-    if (havingParent.length !== 0) {
-      const danhMucs = await DanhMuc.find({
-        parent: req.body.parent,
-      });
-      res.status(200).json(danhMucs);
-    } else {
-      res.sendStatus(404);
-    }
-  } catch (error) {
-    res.status(404).json({
       error,
     });
   }

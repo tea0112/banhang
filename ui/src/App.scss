@@ -1,5 +1,10 @@
 html,
 body {
-  padding: 0px !important;
-  margin: 0px !important;
+  padding: 0px;
+  margin: 0px;
+  overflow-x: hidden;
+}
+
+* {
+  font-family: 'Roboto', sans-serif;
 }

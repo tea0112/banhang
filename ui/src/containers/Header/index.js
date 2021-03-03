@@ -1,49 +1,52 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  Container,
-  Navbar,
-  Form,
-  FormControl,
-  Row,
-  Col,
-} from 'react-bootstrap';
-import './styles.scss';
-import OverriddenBootstrap from './OverriddenBootswatch';
+  faEllipsisV,
+  faUser,
+  faShoppingCart,
+  faSearch,
+} from '@fortawesome/free-solid-svg-icons';
+import './Header.scss';
+import useCatagory from './useCatagory';
+import ItemCatagory from '../../components/ItemCatagory';
 
 const Header = () => {
+  const catagories = useCatagory();
+
+  const onShowCatagory = (e) => {
+    e.preventDefault();
+    document.getElementById('dropdown').classList.toggle('show-catagory');
+  };
+
   return (
-    <>
-      <Navbar
-        bg="light"
-        fixed="top"
-        style={OverriddenBootstrap.navbar}
-        expand="sm"
-      >
-        <Container>
-          <Row>
-            <Col>
-              <Navbar.Brand style={OverriddenBootstrap.navBrand}>
-                <Link to="/">RauSach</Link>
-              </Navbar.Brand>
-            </Col>
-            <Col>
-              <Form inline>
-                <FormControl
-                  type="text"
-                  placeholder="Tìm Kiếm"
-                  style={OverriddenBootstrap.formControl}
-                />
-              </Form>
-            </Col>
-            <Col sm={1}>
-              <Navbar.Toggle aria-controls="basic-navbar-nav" />
-              <Navbar.Collapse id="basic-navbar-nav">a</Navbar.Collapse>
-            </Col>
-          </Row>
-        </Container>
-      </Navbar>
-    </>
+    <nav>
+      <div className="logo">nong san</div>
+
+      <div className="search">
+        <FontAwesomeIcon icon={faSearch} />
+      </div>
+      <div className="user">
+        <FontAwesomeIcon icon={faUser} />
+      </div>
+      <div className="cart">
+        <FontAwesomeIcon icon={faShoppingCart} />
+      </div>
+      <div className="catagory">
+        <span>
+          <a
+            href="/#"
+            className="main-catagory"
+            onClick={onShowCatagory}
+            onKeyDown={null}
+          >
+            <FontAwesomeIcon icon={faEllipsisV} /> Danh mục
+          </a>
+          <ul className="dropdown" id="dropdown">
+            <ItemCatagory catagories={catagories} />
+          </ul>
+        </span>
+      </div>
+    </nav>
   );
 };
 
