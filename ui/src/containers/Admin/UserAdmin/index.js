@@ -1,37 +1,35 @@
-import axios from 'axios';
 import React from 'react';
 import useSearch from './useSearch';
 import './UserAdmin.scss';
-
-const getEmailList = async (email, setEmail) => {
-  const url = `/api/v1/nguoidung/search?email=${email}`;
-  const headers = {
-    Authorization:
-      'eyJhbGciOiJIUzI1NiJ9.ZHVjdGhhaWRldkBnbWFpbC5jb20.ypDuZ7U2-yiYZWycLfk1PRIVXXJcnoR_9lf5t2s4yfk',
-  };
-  await axios.get(url, { headers }).then((res) => {
-    console.log(res.data);
-    setEmail(res.data);
-  });
-};
+import UserSuggestion from '../../../components/Admin/UserSuggestion';
 
 const UserAdmin = () => {
-  const [email, setEmail] = useSearch();
+  const [email, setEmail, , setTyping] = useSearch();
+
   const handleInputChange = () => {
-    const typing = document.querySelector('#typing').value;
-    if (typing !== '') {
-      getEmailList(typing, setEmail);
+    const text = document.querySelector('#typing').value;
+    document.getElementsByClassName('suggest')[0].style.display = 'block';
+    if (text !== '') {
+      setTyping(text);
     } else setEmail(undefined);
-    return email;
+  };
+
+  const handleSetInput = (e, emailForInput) => {
+    e.preventDefault();
+    document.querySelector('#typing').value = emailForInput;
+    document.getElementsByClassName('suggest')[0].style.display = 'none';
   };
 
   return (
     <div className="user-container">
       <div>Nhập Email:</div>
       <div>
-        <form>
+        <form autoComplete="off">
           <input type="text" id="typing" onChange={handleInputChange} />
         </form>
+      </div>
+      <div className="suggest">
+        <UserSuggestion suggestions={email} handleSetInput={handleSetInput} />
       </div>
     </div>
   );

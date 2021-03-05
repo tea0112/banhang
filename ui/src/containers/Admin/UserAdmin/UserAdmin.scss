@@ -14,4 +14,20 @@
       width: 100%;
     }
   }
+
+  .suggest {
+    .result {
+      a {
+        &:hover,
+        &:visited,
+        &:link,
+        &:active {
+          color: rgb(68, 68, 68);
+          text-decoration: none;
+          font-size: 20px;
+          display: block;
+        }
+      }
+    }
+  }
 }

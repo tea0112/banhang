@@ -57,7 +57,7 @@ const HeaderAdmin = () => {
           <a href="#">Sản Phẩm</a>
         </div>
       </div>
-      <nav>
+      <nav className="nav-admin">
         <a href="" className="open-sidebar" onClick={onOpenSidebar}>
           📃
         </a>
