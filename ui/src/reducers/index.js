@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
 import user from './user';
-import catagory from './catagory';
+import category from './category';
 
-export default combineReducers({ user, catagory });
+export default combineReducers({ user, category });

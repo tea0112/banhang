@@ -2,12 +2,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 
 const useCatagory = () => {
-  const catagory = useSelector((state) => state.catagory);
+  const category = useSelector((state) => state.category);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch({ type: 'SET_CATAGORIES_ASYNC' });
+    dispatch({ type: 'SET_CATEGORIES_ASYNC' });
   }, []);
-  return catagory.catagories;
+  return category.categories;
 };
 
 export default useCatagory;

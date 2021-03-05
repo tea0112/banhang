@@ -8,6 +8,8 @@ Router.get('/', danhMucController.getAll);
 
 Router.use(verifyToken);
 
+Router.post('/search', danhMucController.getTopFive);
+
 Router.post('/', danhMucController.add);
 
 Router.delete('/', danhMucController.deleteOne);

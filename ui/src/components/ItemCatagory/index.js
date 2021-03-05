@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const ItemCatagory = ({ catagories }) => {
+const ItemCatagory = ({ categories }) => {
   const onToggleCategory = () => {
-    document.getElementById('dropdown').classList.toggle('show-catagory');
+    document.getElementById('dropdown').classList.toggle('show-category');
   };
-  if (catagories)
-    return catagories.map((element) => {
+  if (categories)
+    return categories.map((element) => {
       const url = `/danh-muc/${element.url}`;
       return (
         <li key={Math.random()}>

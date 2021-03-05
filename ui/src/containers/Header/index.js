@@ -12,11 +12,11 @@ import useCatagory from './useCatagory';
 import ItemCatagory from '../../components/ItemCatagory';
 
 const Header = () => {
-  const catagories = useCatagory();
+  const categories = useCatagory();
 
   const onShowCatagory = (e) => {
     e.preventDefault();
-    document.getElementById('dropdown').classList.toggle('show-catagory');
+    document.getElementById('dropdown').classList.toggle('show-category');
   };
 
   return (
@@ -34,18 +34,18 @@ const Header = () => {
       <div className="cart">
         <FontAwesomeIcon icon={faShoppingCart} />
       </div>
-      <div className="catagory">
+      <div className="category">
         <span>
           <a
             href="/#"
-            className="main-catagory"
+            className="main-category"
             onClick={onShowCatagory}
             onKeyDown={null}
           >
             <FontAwesomeIcon icon={faEllipsisV} /> Danh mục
           </a>
           <ul className="dropdown" id="dropdown">
-            <ItemCatagory catagories={catagories} />
+            <ItemCatagory categories={categories} />
           </ul>
         </span>
       </div>

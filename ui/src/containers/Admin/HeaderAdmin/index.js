@@ -23,7 +23,7 @@ const HeaderAdmin = () => {
 
   const onToggleCatagory = (e) => {
     e.preventDefault();
-    const subCatagory = document.querySelector('.sub-catagory');
+    const subCatagory = document.querySelector('.sub-category');
     if (subCatagory.style.display === 'block')
       subCatagory.style.display = 'none';
     else subCatagory.style.display = 'block';
@@ -43,14 +43,14 @@ const HeaderAdmin = () => {
             <Link to="/admin/user">chỉnh sửa người dùng</Link>
           </div>
         </div>
-        <div className="catagory">
+        <div className="category">
           <a href="#" onClick={onToggleCatagory}>
             Danh Mục
           </a>
-          <div className="sub-catagory">
-            <Link to="/admin/catagory/add">thêm danh mục</Link>
-            <Link to="/admin/catagory/update">sửa danh mục</Link>
-            <Link to="/admin/catagory/delete">xoá danh mục</Link>
+          <div className="sub-category">
+            <Link to="/admin/category/add">thêm danh mục</Link>
+            <Link to="/admin/category/update">sửa danh mục</Link>
+            <Link to="/admin/category/delete">xoá danh mục</Link>
           </div>
         </div>
         <div className="product">

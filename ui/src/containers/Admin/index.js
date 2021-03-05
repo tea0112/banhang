@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import UserAdmin from './UserAdmin';
 import AddCatagory from './CatagoryAdmin/AddCatagory';
 import UpdateCatagory from './CatagoryAdmin/UpdateCatagory';
-import DeleteCatagory from './CatagoryAdmin/DeleteCatagory';
+import DeleteCatagory from './CatagoryAdmin/DeleteCategory';
 
 const Admin = () => {
   return (
@@ -13,13 +13,13 @@ const Admin = () => {
         <Route path="/admin/user" exact>
           <UserAdmin />
         </Route>
-        <Route path="/admin/catagory/add" exact>
+        <Route path="/admin/category/add" exact>
           <AddCatagory />
         </Route>
-        <Route path="/admin/catagory/update" exact>
+        <Route path="/admin/category/update" exact>
           <UpdateCatagory />
         </Route>
-        <Route path="/admin/catagory/delete" exact>
+        <Route path="/admin/category/delete" exact>
           <DeleteCatagory />
         </Route>
       </Switch>
