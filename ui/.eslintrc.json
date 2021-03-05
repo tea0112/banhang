@@ -16,6 +16,8 @@
     "import/no-unresolved": "off",
     "arrow-body-style": "off",
     "react/prop-types": "off",
-    "click-events-have-key-events": "off"
+    "click-events-have-key-events": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "jsx-a11y/anchor-has-content": "off"
   }
 }

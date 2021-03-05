@@ -3,6 +3,15 @@ body {
   padding: 0px;
   margin: 0px;
   overflow-x: hidden;
+
+  a {
+    &:link,
+    &:visited,
+    &:hover,
+    &:active {
+      text-decoration: none;
+    }
+  }
 }
 
 * {

@@ -6,6 +6,7 @@ import {
   faShoppingCart,
   faSearch,
 } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 import './Header.scss';
 import useCatagory from './useCatagory';
 import ItemCatagory from '../../components/ItemCatagory';
@@ -20,7 +21,9 @@ const Header = () => {
 
   return (
     <nav>
-      <div className="logo">nong san</div>
+      <div className="logo">
+        <Link to="/">nong san</Link>
+      </div>
 
       <div className="search">
         <FontAwesomeIcon icon={faSearch} />

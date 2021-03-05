@@ -65,7 +65,7 @@ nav {
       overflow-y: hidden;
       flex-direction: column;
       right: 0;
-      width: 70%;
+      width: 30%;
       height: 100%;
       z-index: 1;
       border-left: 0.063rem solid #d8d8d8;
@@ -96,8 +96,13 @@ nav {
   }
 }
 
-@media only screen and (min-width: 375px) and (max-width: 812px) {
+@media only screen and (min-width: 320px) and (max-width: 414px) {
   nav {
     background-color: #ffffff;
+    .catagory {
+      .dropdown {
+        width: 70%;
+      }
+    }
   }
 }

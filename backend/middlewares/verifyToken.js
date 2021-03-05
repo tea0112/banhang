@@ -3,7 +3,6 @@ const authConfig = require('../config/auth.config');
 
 module.exports = (req, res, next) => {
   const authHeader = req.headers.authorization;
-
   if (authHeader) {
     jwt.verify(authHeader, authConfig.secretKey, (err, decode) => {
       if (err) {

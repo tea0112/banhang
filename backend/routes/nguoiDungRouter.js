@@ -9,8 +9,10 @@ Router.post('/', nguoiDungController.createNguoiDung);
 
 Router.use(verifyToken);
 
-Router.use(permit('member'));
-
 Router.route('/').get(nguoiDungController.getNguoiDung);
+
+Router.use(permit('admin'));
+
+Router.route('/search').get(nguoiDungController.getTopFive);
 
 module.exports = Router;
