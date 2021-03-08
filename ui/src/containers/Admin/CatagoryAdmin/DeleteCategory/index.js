@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import './style.scss';
 import CategorySuggestion from '../../../../components/Admin/CategorySuggestion';
 import useSearch from './useSearch';
@@ -8,20 +9,40 @@ const DeleteCategory = () => {
 
   const handleChange = () => {
     const tenInput = document.getElementsByClassName('delete-input')[0].value;
-    document.getElementsByClassName('delete-suggestion')[0].style.display =
-      'block';
     if (tenInput !== '') {
       setTyping(tenInput);
     }
+    try {
+      document.getElementsByClassName('delete-suggestion')[0].style.display =
+        'block';
+    } catch (e) {}
   };
 
   const handleChoose = (e, chooseTen) => {
     e.preventDefault();
-    console.log('choose run');
     const input = document.getElementsByClassName('delete-input')[0];
     input.value = chooseTen;
     document.getElementsByClassName('delete-suggestion')[0].style.display =
       'none';
+  };
+
+  const handleRemove = (e) => {
+    e.preventDefault();
+    const url = `/api/v1/danhmuc`;
+    const method = 'DELETE';
+    const tenInput = document.getElementsByClassName('delete-input')[0];
+    const token = localStorage.getItem('token');
+    const headers = { Authorization: token };
+    axios({
+      url,
+      method,
+      params: {
+        ten: tenInput.value,
+      },
+      headers,
+    }).then(() => {
+      tenInput.value = '';
+    });
   };
 
   return (
@@ -39,6 +60,11 @@ const DeleteCategory = () => {
       </div>
       <div>
         <CategorySuggestion categories={ten} choose={handleChoose} />
+      </div>
+      <div>
+        <button onClick={handleRemove} type="button">
+          Xoá
+        </button>
       </div>
     </div>
   );

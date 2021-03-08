@@ -22,6 +22,15 @@ const Admin = () => {
         <Route path="/admin/category/delete" exact>
           <DeleteCatagory />
         </Route>
+        <Route path="/admin/product/add" exact>
+          <AddCatagory />
+        </Route>
+        <Route path="/admin/product/update" exact>
+          <UpdateCatagory />
+        </Route>
+        <Route path="/admin/product/delete" exact>
+          <DeleteCatagory />
+        </Route>
       </Switch>
     </>
   );

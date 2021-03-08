@@ -1,0 +1,1 @@
+{"version":3,"file":"Quyen.js","sourceRoot":"","sources":["../../src/models/Quyen.ts"],"names":[],"mappings":";;AAAA,uCAAyC;AAEzC,MAAM,WAAW,GAAG,IAAI,iBAAM,CAAC;IAC7B,GAAG,EAAE;QACH,IAAI,EAAE,MAAM;QACZ,QAAQ,EAAE,CAAC,IAAI,EAAE,iBAAiB,CAAC;QACnC,MAAM,EAAE,IAAI;KACb;CACF,CAAC,CAAC;AAEH,kBAAe,gBAAK,CAAC,OAAO,EAAE,WAAW,CAAC,CAAC"}
