@@ -1,0 +1,12 @@
+[
+  {
+    "email": "ducthaidev@gmail.com",
+    "password": "1234567",
+    "ho": "nguyen",
+    "ten": "thai",
+    "soDienThoai": "0987314426",
+    "ngaySinh": "01-12-2000",
+    "diaChi": "to 12, p trung thanh",
+    "roles": ["member"]
+  }
+]

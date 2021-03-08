@@ -1,0 +1,19 @@
+.add-category {
+  margin: 8px;
+
+  & > div {
+    padding: 4px 0;
+
+    input {
+      width: 100%;
+    }
+  }
+
+  & * {
+    font-size: 30px;
+  }
+
+  .add-status {
+    display: none;
+  }
+}

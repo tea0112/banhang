@@ -69,29 +69,6 @@
     align-self: flex-end;
     font-size: 40px;
   }
-
-  .product {
-    & > a {
-      display: block;
-    }
-    .sub-product {
-      background-color: aliceblue;
-      display: none;
-      a {
-        display: block;
-        padding: 8px 8px 8px 20px;
-        &:link,
-        &:visited,
-        &:hover,
-        &:active {
-          color: rgb(0, 0, 0);
-          font-size: 25px;
-          padding: 8px 8px 8px 20px;
-          text-transform: capitalize;
-        }
-      }
-    }
-  }
 }
 
 .open-sidebar {

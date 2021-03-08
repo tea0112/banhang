@@ -29,14 +29,6 @@ const HeaderAdmin = () => {
     else subCatagory.style.display = 'block';
   };
 
-  const onToggle = (e, name) => {
-    e.preventDefault();
-    const subCatagory = document.querySelector(`.sub-${name}`);
-    if (subCatagory.style.display === 'block')
-      subCatagory.style.display = 'none';
-    else subCatagory.style.display = 'block';
-  };
-
   return (
     <>
       <div className="sidebar">
@@ -62,19 +54,7 @@ const HeaderAdmin = () => {
           </div>
         </div>
         <div className="product">
-          <a
-            href="#"
-            onClick={(e) => {
-              onToggle(e, 'product');
-            }}
-          >
-            Sản Phẩm
-          </a>
-          <div className="sub-product">
-            <Link to="/admin/product/add">thêm danh mục</Link>
-            <Link to="/admin/product/update">sửa danh mục</Link>
-            <Link to="/admin/product/delete">xoá danh mục</Link>
-          </div>
+          <a href="#">Sản Phẩm</a>
         </div>
       </div>
       <nav className="nav-admin">

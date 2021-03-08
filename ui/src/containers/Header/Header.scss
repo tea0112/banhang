@@ -1,0 +1,118 @@
+$child-nav-padding: 10px;
+
+* {
+  box-sizing: border-box;
+}
+
+nav {
+  & {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 0.063rem solid #d8d8d8;
+  }
+
+  .logo {
+    font-size: 15px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    width: 37%;
+    padding: $child-nav-padding;
+    a {
+      &:link,
+      &:visited,
+      &:hover,
+      &:active {
+        text-decoration: none;
+        color: #000;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .search {
+    padding: $child-nav-padding;
+  }
+
+  .user {
+    padding: $child-nav-padding;
+  }
+
+  .cart {
+    padding: $child-nav-padding;
+  }
+
+  .category {
+    display: block;
+    cursor: pointer;
+
+    .main-category {
+      padding: $child-nav-padding;
+      display: block;
+      text-transform: uppercase;
+      position: relative;
+      &:link,
+      &:visited,
+      &:hover,
+      &:active {
+        text-decoration: none;
+        color: #000;
+        // font-weight: bold;
+      }
+    }
+
+    .dropdown {
+      list-style-type: none;
+      display: none;
+      position: fixed;
+      padding: 0;
+      margin: 0;
+      background-color: #fff;
+      overflow-y: hidden;
+      flex-direction: column;
+      right: 0;
+      width: 30%;
+      height: 100%;
+      z-index: 1;
+      border-left: 0.063rem solid #d8d8d8;
+
+      li {
+        border-top: 0.063rem solid #d8d8d8;
+        font-size: 24px;
+
+        a {
+          &:link,
+          &:visited,
+          &:hover,
+          &:active {
+            text-decoration: none;
+            color: #000;
+            text-transform: uppercase;
+            font-weight: bold;
+            padding: 5px 5px;
+            display: block;
+          }
+        }
+      }
+    }
+
+    .show-category {
+      display: flex;
+    }
+  }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 414px) {
+  nav {
+    background-color: #ffffff;
+    .category {
+      .dropdown {
+        width: 70%;
+      }
+    }
+  }
+}
