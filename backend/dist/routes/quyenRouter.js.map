@@ -1,0 +1,1 @@
+{"version":3,"file":"quyenRouter.js","sourceRoot":"","sources":["../../src/routes/quyenRouter.ts"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;AAAA,sDAA8B;AAC9B,gFAAkE;AAElE,MAAM,MAAM,GAAG,iBAAO,CAAC,MAAM,EAAE,CAAC;AAEhC,MAAM,CAAC,KAAK,CAAC,GAAG,CAAC;KACd,GAAG,CAAC,eAAe,CAAC,YAAY,CAAC;KACjC,IAAI,CAAC,eAAe,CAAC,WAAW,CAAC,CAAC;AAErC,kBAAe,MAAM,CAAC"}
