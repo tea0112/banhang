@@ -13,6 +13,6 @@ Router.route('/').get(nguoiDungController.getNguoiDung);
 
 Router.use(permit('admin'));
 
-Router.route('/search').get(nguoiDungController.getTopFive);
+Router.route('/search').get(nguoiDungController.getSearchResult);
 
 module.exports = Router;

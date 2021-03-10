@@ -1,26 +1,13 @@
 const bcrypt = require('bcrypt');
 const NguoiDung = require('../models/NguoiDung');
+const getSearchResult = require('./crud/getSearchResult');
 
 exports.getNguoiDung = async (req, res) => {
   const nguoidung = await NguoiDung.findOne({ email: req.email });
   res.status(200).json(nguoidung);
 };
 
-exports.getTopFive = async (req, res) => {
-  try {
-    if (req.query.email) {
-      const regex = `^${req.query.email}.*`;
-      const nguoidung = await NguoiDung.find({
-        email: { $regex: regex },
-      }).limit(5);
-      res.status(200).json(nguoidung);
-    } else res.status(501).json({ query: req.query });
-  } catch (error) {
-    res.sendStatus(404).json({
-      error,
-    });
-  }
-};
+exports.getSearchResult = getSearchResult(NguoiDung, 'email', 'query', 5);
 
 exports.createNguoiDung = (req, res) => {
   // encode password into bcrypt

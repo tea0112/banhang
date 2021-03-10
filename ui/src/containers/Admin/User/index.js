@@ -1,6 +1,6 @@
 import React from 'react';
 import useSearch from './useSearch';
-import './UserAdmin.scss';
+import '../Admin.scss';
 import UserSuggestion from '../../../components/Admin/UserSuggestion';
 
 const UserAdmin = () => {

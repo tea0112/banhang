@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+const sanPhamRouter = require('./routes/sanPhamRouter');
 const authRouter = require('./routes/authRouter');
 const verifyToken = require('./middlewares/verifyToken');
 const quyenRouter = require('./routes/quyenRouter');
@@ -22,5 +23,7 @@ app.use('/api/v1/nguoidung', nguoiDungRouter);
 app.use('/api/v1/quyen', verifyToken, quyenRouter);
 
 app.use('/api/v1/danhmuc', danhMucRouter);
+
+app.use('/api/v1/sanpham', sanPhamRouter);
 
 module.exports = app;

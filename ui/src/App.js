@@ -3,7 +3,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Home from './containers/Home';
 import Header from './containers/Header';
-import HeaderAdmin from './containers/Admin/HeaderAdmin';
+import HeaderAdmin from './containers/Admin/Header';
 import Admin from './containers/Admin';
 
 const App = () => {

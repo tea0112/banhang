@@ -1,63 +1,13 @@
 const DanhMuc = require('../models/DanhMuc');
+const getSearchResult = require('./crud/getSearchResult');
+const add = require('./crud/add');
+const getAll = require('./crud/getAll');
+const deleteOne = require('./crud/deleteOne');
 
-exports.add = (req, res) => {
-  const danhmuc = new DanhMuc({
-    ...req.body,
-  });
+exports.add = add(DanhMuc);
 
-  danhmuc
-    .save()
-    .then(() => {
-      res.sendStatus(201);
-    })
-    .catch((err) => {
-      res.status(404).json({
-        error: err,
-      });
-    });
-};
+exports.getAll = getAll(DanhMuc);
 
-exports.getAll = async (req, res) => {
-  try {
-    const danhMucs = await DanhMuc.find({});
-    res.status(200).json(danhMucs);
-  } catch (error) {
-    res.status(404).json({
-      error,
-    });
-  }
-};
+exports.deleteOne = deleteOne(DanhMuc, 'ten');
 
-exports.deleteOne = async (req, res) => {
-  try {
-    const exist = await DanhMuc.findOne({
-      ten: req.body.ten,
-    });
-    if (exist) {
-      await DanhMuc.deleteOne({
-        ten: req.body.ten,
-      });
-      res.status(200).json();
-    } else {
-      res.sendStatus(404);
-    }
-  } catch (error) {
-    res.sendStatus(404);
-  }
-};
-
-exports.getTopFive = async (req, res) => {
-  try {
-    if (req.body.ten) {
-      const regex = `^${req.body.ten}.*`;
-      const danhmuc = await DanhMuc.find({
-        ten: { $regex: regex },
-      }).limit(5);
-      res.status(200).json(danhmuc);
-    } else res.sendStatus(404);
-  } catch (error) {
-    res.sendStatus(404).json({
-      error,
-    });
-  }
-};
+exports.getSearchResult = getSearchResult(DanhMuc, 'ten', 'params', 5);

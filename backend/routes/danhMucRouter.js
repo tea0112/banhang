@@ -8,10 +8,10 @@ Router.get('/', danhMucController.getAll);
 
 Router.use(verifyToken);
 
-Router.post('/search', danhMucController.getTopFive);
+Router.get('/search/:ten', danhMucController.getSearchResult);
 
 Router.post('/', danhMucController.add);
 
-Router.delete('/', danhMucController.deleteOne);
+Router.delete('/:ten', danhMucController.deleteOne);
 
 module.exports = Router;
