@@ -21,7 +21,7 @@ exports.login = (req, res) => {
               accessToken: generateAccessToken(nguoiDung.email),
             });
           } else {
-            console.log(result);
+            throw err;
           }
         });
       } else {

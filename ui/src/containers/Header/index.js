@@ -1,55 +1,85 @@
 import React from 'react';
+import { Navbar, Form } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faEllipsisV,
-  faUser,
-  faShoppingCart,
-  faSearch,
+  faBars,
+  faWindowClose,
+  faHome,
 } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import './Header.scss';
-import useCatagory from './useCatagory';
+import useCategory from './useCategory';
 import ItemCatagory from '../../components/ItemCatagory';
 
 const Header = () => {
-  const categories = useCatagory();
+  const categories = useCategory();
 
-  const onShowCatagory = (e) => {
+  const handleClose = (e) => {
     e.preventDefault();
-    document.getElementById('dropdown').classList.toggle('show-category');
+    document.getElementsByClassName('sidebar-header')[0].style.display = 'none';
+    document.getElementsByClassName('overlay-sidebar')[0].style.display =
+      'none';
+  };
+
+  const handleOpenSideBar = (e) => {
+    e.preventDefault();
+    document.getElementsByClassName('sidebar-header')[0].style.display =
+      'block';
+    document.getElementsByClassName('overlay-sidebar')[0].style.display =
+      'block';
   };
 
   return (
-    <nav>
-      <div className="logo">
-        <Link to="/">nong san</Link>
-      </div>
-
-      <div className="search">
-        <FontAwesomeIcon icon={faSearch} />
-      </div>
-      <div className="user">
-        <FontAwesomeIcon icon={faUser} />
-      </div>
-      <div className="cart">
-        <FontAwesomeIcon icon={faShoppingCart} />
-      </div>
-      <div className="category">
-        <span>
-          <a
-            href="/#"
-            className="main-category"
-            onClick={onShowCatagory}
-            onKeyDown={null}
-          >
-            <FontAwesomeIcon icon={faEllipsisV} /> Danh mục
-          </a>
-          <ul className="dropdown" id="dropdown">
-            <ItemCatagory categories={categories} />
-          </ul>
-        </span>
-      </div>
-    </nav>
+    <>
+      <Navbar
+        fixed="top"
+        className="navbar navbar-expand-lg navbar-dark bg-primary"
+      >
+        <div className="header">
+          <div>
+            <Navbar.Brand>NongSan</Navbar.Brand>
+          </div>
+          <div className="search-header">
+            <Form>
+              <Form.Control type="text" placeholder="Search" />
+            </Form>
+          </div>
+          <div>
+            <a href="#" onClick={(e) => handleOpenSideBar(e)}>
+              <FontAwesomeIcon icon={faBars} className="fabars" />
+            </a>
+          </div>
+          <div className="overlay-sidebar">
+            <a
+              href="#"
+              onClick={(e) => {
+                handleClose(e);
+              }}
+            >
+              {}
+            </a>
+          </div>
+          <div className="sidebar-header">
+            <div className="close-sidebar">
+              <a
+                href="#"
+                onClick={(e) => {
+                  handleClose(e);
+                }}
+              >
+                <FontAwesomeIcon
+                  icon={faWindowClose}
+                  className="fa-window-close-header"
+                />
+              </a>
+            </div>
+            <ul>
+              <ItemCatagory categories={categories} />
+            </ul>
+          </div>
+        </div>
+      </Navbar>
+    </>
   );
 };
 

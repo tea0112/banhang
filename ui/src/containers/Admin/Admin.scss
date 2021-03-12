@@ -106,14 +106,10 @@
   position: fixed;
 }
 
-.main {
-  background-color: #ecf0f5;
-}
-
 .nav-admin {
   background-color: #3c8dbc;
   width: 100%;
-  position: sticky;
+  position: fixed;
   top: 0;
   display: flex;
   flex-direction: row;
@@ -128,6 +124,10 @@
     font-weight: bold;
     margin: 0 auto;
   }
+}
+
+.admin {
+  padding-top: 70px;
 }
 
 // User
@@ -214,16 +214,17 @@
 .product {
   font-size: 30px;
 
-  margin: 0px 5px 3px 8px;
-
   .add-product {
+    form > * {
+      margin: 0px 5px 3px 8px;
+    }
+
     input[type='text'] {
       font-size: 30px;
       width: 100%;
     }
 
     input[type='file'] {
-      margin: 0px 2px 3px 8px;
       font-size: 30px;
       width: 100%;
     }

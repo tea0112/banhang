@@ -11,7 +11,7 @@ import DeleteProduct from './Product/Delete';
 
 const Admin = () => {
   return (
-    <>
+    <div className="admin">
       <Switch>
         {/* User */}
         <Route path="/admin/user" exact>
@@ -38,7 +38,7 @@ const Admin = () => {
           <DeleteProduct />
         </Route>
       </Switch>
-    </>
+    </div>
   );
 };
 

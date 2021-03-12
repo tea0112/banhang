@@ -1,20 +1,71 @@
 import React from 'react';
+import axios from 'axios';
+import DropdownBar from '../../../DropdownBar';
+
+const getAllCategories = () => {
+  return axios.get('/api/v1/danhmuc').then((res) => res.data);
+};
 
 const Add = () => {
+  const handleAdd = () => {
+    const getElementById = (id) => {
+      return document.getElementById(id);
+    };
+
+    const ten = getElementById('ten').value;
+    const gia = getElementById('gia').value;
+    const file = getElementById('file').value;
+    const moTa = getElementById('moTa').value;
+
+    axios.post(
+      '/api/v1/sanpham',
+      {},
+      { headers: localStorage.getItem('token') }
+    );
+  };
+
+  const handleChangeImg = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => {
+        const img = document.getElementById('show');
+        img.setAttribute('src', fileReader.result);
+        img.style.display = 'block';
+      };
+    }
+  };
+
   return (
     <div className="product">
       <div className="add-product">
         <form>
           <div>Nhập tên:</div>
-          <input type="text" />
+          <input type="text" id="ten" />
           <div>Nhập giá:</div>
-          <input type="text" />
+          <input type="text" id="gia" />
+          <div>Chọn danh mục:</div>
+          <DropdownBar name="dropdownbar-product" data={getAllCategories} />
           <div>Tải lên ảnh:</div>
-          <input type="file" />
-          <div>Mô tả:</div>
-          <input type="text" />
+          <input type="file" id="file" onChange={(e) => handleChangeImg(e)} />
           <div>
-            <input type="submit" value="Thêm" />
+            <img
+              id="show"
+              style={{ display: 'none', width: '200px', height: '200px' }}
+              alt="preview"
+            />
+          </div>
+          <div>Mô tả:</div>
+          <input type="text" id="moTa" />
+          <div>
+            <input
+              type="submit"
+              value="Thêm"
+              onClick={() => {
+                handleAdd();
+              }}
+            />
           </div>
         </form>
       </div>

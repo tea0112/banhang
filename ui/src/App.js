@@ -1,6 +1,8 @@
 import './App.scss';
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+import './bootstrap.min.css';
 import Home from './containers/Home';
 import Header from './containers/Header';
 import HeaderAdmin from './containers/Admin/Header';

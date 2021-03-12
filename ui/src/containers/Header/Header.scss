@@ -1,117 +1,113 @@
-$child-nav-padding: 10px;
+.navbar {
+  padding: 0.1em;
 
-* {
-  box-sizing: border-box;
-}
-
-nav {
-  & {
-    position: sticky;
-    top: 0;
+  .header {
     width: 100%;
-    background-color: rgb(255, 255, 255);
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    border-bottom: 0.063rem solid #d8d8d8;
-  }
+    align-items: center;
 
-  .logo {
-    font-size: 15px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    width: 37%;
-    padding: $child-nav-padding;
-    a {
-      &:link,
-      &:visited,
-      &:hover,
-      &:active {
-        text-decoration: none;
-        color: #000;
-        font-weight: bold;
-      }
+    li {
+      display: inline-block;
+      width: 33%;
     }
-  }
-
-  .search {
-    padding: $child-nav-padding;
-  }
-
-  .user {
-    padding: $child-nav-padding;
-  }
-
-  .cart {
-    padding: $child-nav-padding;
-  }
-
-  .category {
-    display: block;
-    cursor: pointer;
-
-    .main-category {
-      padding: $child-nav-padding;
-      display: block;
-      text-transform: uppercase;
-      position: relative;
-      &:link,
-      &:visited,
-      &:hover,
-      &:active {
-        text-decoration: none;
-        color: #000;
-        // font-weight: bold;
-      }
+    .navbar-brand {
+      margin-left: 5px;
+      line-height: 40px;
+    }
+    .search-header {
+      margin-right: 40px;
+      width: 90%;
     }
 
-    .dropdown {
-      list-style-type: none;
-      display: none;
-      position: fixed;
-      padding: 0;
-      margin: 0;
-      background-color: #fff;
-      overflow-y: hidden;
-      flex-direction: column;
+    .fa-bars {
+      color: #fff !important;
+      font-size: 40px;
+      margin-right: 10px;
+    }
+
+    .overlay-sidebar {
+      position: fixed; /* Sit on top of the page content */
+      // display: none; /* Hidden by default */
+      width: 100%; /* Full width (cover the whole page) */
+      height: 100%; /* Full height (cover the whole page) */
+      top: 0;
+      left: 0;
       right: 0;
-      width: 30%;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+      z-index: 2;
+      display: none;
+      a {
+        width: 100%; /* Full width (cover the whole page) */
+        height: 100%;
+        display: block;
+      }
+    }
+
+    .sidebar-header {
+      z-index: 999;
+      position: fixed;
+      top: 0;
+      right: 0;
+      background: #7386d5;
       height: 100%;
-      z-index: 1;
-      border-left: 0.063rem solid #d8d8d8;
+      width: 35%;
+      overflow-y: scroll;
+      display: none;
 
-      li {
-        border-top: 0.063rem solid #d8d8d8;
-        font-size: 24px;
+      * {
+        color: #fff;
+      }
 
-        a {
-          &:link,
-          &:visited,
-          &:hover,
-          &:active {
-            text-decoration: none;
-            color: #000;
-            text-transform: uppercase;
-            font-weight: bold;
-            padding: 5px 5px;
+      .close-sidebar {
+        .fa-window-close-header {
+          font-size: 40px;
+          margin: 10px;
+        }
+      }
+
+      ul {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+
+        li {
+          width: 100%;
+          a {
             display: block;
+            font-size: 2em;
+            padding: 10px;
+            text-transform: capitalize;
           }
         }
       }
     }
-
-    .show-category {
-      display: flex;
-    }
   }
 }
 
-@media only screen and (min-width: 320px) and (max-width: 414px) {
-  nav {
-    background-color: #ffffff;
-    .category {
-      .dropdown {
-        width: 70%;
+@media screen and (max-width: 480px) {
+  .navbar {
+    .header {
+      .sidebar-header {
+        width: 80%;
+
+        .close-sidebar {
+          .fa-window-close-header {
+            font-size: 40px;
+            margin: 10px;
+          }
+        }
+
+        ul {
+          li {
+            width: 100%;
+            a {
+              font-size: 2em;
+            }
+          }
+        }
       }
     }
   }
