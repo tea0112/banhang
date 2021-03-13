@@ -8,7 +8,7 @@ module.exports = (...permittedRoles) => async (req, res, next) => {
     if (nguoidung && permittedRoles.includes(nguoidung.role)) {
       next();
     } else {
-      res.status(500).json({
+      res.status(401).json({
         message: 'no permission',
       });
     }

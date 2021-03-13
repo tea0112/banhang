@@ -1,6 +1,7 @@
 // Admin
 .main {
   background-color: #ecf0f5;
+  overflow-x: hidden;
 }
 
 // Header
@@ -216,7 +217,30 @@
 
   .add-product {
     form > * {
-      margin: 0px 5px 3px 8px;
+      margin: 0px 0px 3px 8px;
+    }
+
+    form {
+      width: 100%;
+    }
+
+    .dropdown {
+      .form-group {
+        margin: 0;
+
+        .custom-select {
+          font-size: 1em;
+          overflow-x: hidden !important;
+
+          option {
+            width: 0px;
+            margin: 0px;
+            padding: 0;
+            height: 0px;
+            overflow-x: hidden !important;
+          }
+        }
+      }
     }
 
     input[type='text'] {

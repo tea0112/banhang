@@ -7,7 +7,7 @@ const Router = express.Router();
 
 Router.use(verifyToken);
 
-Router.use(permit('admin'));
+// Router.use(permit('admin'));
 
 Router.post('/', sanPhamController.add);
 

@@ -4,6 +4,7 @@ const add = (Model, customData) => async (
   req = express.request,
   res = express.response
 ) => {
+  // console.log(req);
   try {
     const model = new Model({
       ...req.body,

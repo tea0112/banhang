@@ -3,8 +3,9 @@ import { Navbar, Form } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faBars,
+  faUser,
   faWindowClose,
-  faHome,
+  faShoppingCart,
 } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import './Header.scss';
@@ -45,8 +46,30 @@ const Header = () => {
             </Form>
           </div>
           <div>
-            <a href="#" onClick={(e) => handleOpenSideBar(e)}>
-              <FontAwesomeIcon icon={faBars} className="fabars" />
+            <a
+              href="#"
+              onClick={(e) => handleOpenSideBar(e)}
+              className="faUser"
+            >
+              <FontAwesomeIcon icon={faUser} />
+            </a>
+          </div>
+          <div>
+            <a
+              href="#"
+              onClick={(e) => handleOpenSideBar(e)}
+              className="faShoppingCart"
+            >
+              <FontAwesomeIcon icon={faShoppingCart} />
+            </a>
+          </div>
+          <div>
+            <a
+              href="#"
+              onClick={(e) => handleOpenSideBar(e)}
+              className="faBars"
+            >
+              <FontAwesomeIcon icon={faBars} />
             </a>
           </div>
           <div className="overlay-sidebar">

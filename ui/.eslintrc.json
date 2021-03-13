@@ -23,6 +23,7 @@
     "no-console": ["warn", { "allow": ["warn", "error"] }],
     "no-empty": ["error", { "allowEmptyCatch": true }],
     "no-unused-vars": "off",
-    "no-debugger": "warn"
+    "no-debugger": "warn",
+    "no-alert": "off"
   }
 }

@@ -6,6 +6,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 30px;
 
     li {
       display: inline-block;
@@ -13,17 +14,36 @@
     }
     .navbar-brand {
       margin-left: 5px;
-      line-height: 40px;
+      line-height: 30px;
     }
     .search-header {
-      margin-right: 40px;
+      margin-right: 10px;
       width: 90%;
+
+      form {
+        input {
+          padding: 4px 12px;
+          height: 30px;
+        }
+      }
     }
 
-    .fa-bars {
+    .faUser {
       color: #fff !important;
-      font-size: 40px;
-      margin-right: 10px;
+      font-size: 25px;
+      padding: 0 10px;
+    }
+
+    .faShoppingCart {
+      color: #fff !important;
+      font-size: 25px;
+      padding: 0 10px;
+    }
+
+    .faBars {
+      color: #fff !important;
+      font-size: 25px;
+      padding: 0 10px;
     }
 
     .overlay-sidebar {
