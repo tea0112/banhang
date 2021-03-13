@@ -10,7 +10,7 @@ const user = (state = initialState, action) => {
     case CHANGE_LOGIN_STATE:
       return {
         ...state,
-        isLogin: !state.isLogin,
+        isLogin: true,
       };
     case SET_CREDENTIALS:
       return {

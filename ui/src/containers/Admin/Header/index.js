@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../Admin.scss';
+import './style.scss';
 
 const HeaderAdmin = () => {
   const onCloseSidebar = (e) => {
@@ -38,7 +38,13 @@ const HeaderAdmin = () => {
   };
 
   return (
-    <>
+    <div className="header-admin">
+      <nav className="nav-admin">
+        <a href="" className="open-sidebar" onClick={onOpenSidebar}>
+          📃
+        </a>
+        <Link to="/admin">Admin</Link>
+      </nav>
       <div className="sidebar">
         <a href="#" className="close-sidebar" onClick={onCloseSidebar}>
           ❌
@@ -77,13 +83,7 @@ const HeaderAdmin = () => {
           </div>
         </div>
       </div>
-      <nav className="nav-admin">
-        <a href="" className="open-sidebar" onClick={onOpenSidebar}>
-          📃
-        </a>
-        <Link to="/admin">Admin</Link>
-      </nav>
-    </>
+    </div>
   );
 };
 
