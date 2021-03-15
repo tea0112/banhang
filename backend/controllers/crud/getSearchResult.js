@@ -5,20 +5,20 @@ const getSearchResult = (model, identify, queryType, numberOfResult) => async (
   res = express.response
 ) => {
   try {
-    let query;
-    if (queryType === 'params') query = req.params[identify];
-    else if (queryType === 'query') query = req.query[identify];
-    else throw 'not found query type';
+    const query =
+      queryType === 'params' ? req.params[identify] : req.query[identify];
+    console.log(query);
+    if (queryType !== 'params' && queryType !== 'query')
+      throw 'not found query type';
 
-    if (query) {
-      const regex = `^${query}.*`;
-      await model
-        .find({
-          ten: { $regex: regex },
-        })
-        .limit(numberOfResult)
-        .then((data) => res.status(200).json(data));
-    } else res.sendStatus(404);
+    const regex = `^${query}.*`;
+
+    await model
+      .find({
+        ten: { $regex: regex },
+      })
+      .limit(numberOfResult)
+      .then((data) => res.status(200).json(data));
   } catch (error) {
     res.sendStatus(404).json({
       error,
