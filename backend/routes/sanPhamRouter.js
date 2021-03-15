@@ -5,6 +5,18 @@ const sanPhamController = require('../controllers/sanPhamController');
 
 const Router = express.Router();
 
+Router.get('/import', sanPhamController.importSanPham);
+
+Router.get(
+  '/field/:field/order/:order/limit/:limit',
+  sanPhamController.sortSanPham
+);
+
+Router.get(
+  '/field/:field/order/:order/limit/:limit/query',
+  sanPhamController.sortSanPham
+);
+
 Router.use(verifyToken);
 
 // Router.use(permit('admin'));

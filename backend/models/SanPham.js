@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const mongoosePaginate = require('mongoose-paginate-v2');
 
 const sanPhanSchema = mongoose.Schema({
   ten: {
@@ -30,5 +31,7 @@ const sanPhanSchema = mongoose.Schema({
     type: Date,
   },
 });
+
+sanPhanSchema.plugin(mongoosePaginate);
 
 module.exports = mongoose.model('SanPham', sanPhanSchema);

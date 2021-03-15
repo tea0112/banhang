@@ -4,6 +4,8 @@ const danhMucController = require('../controllers/danhMucController');
 
 const Router = express.Router();
 
+Router.get('/:thuocDanhMuc/page/:page', danhMucController.paginate);
+
 Router.get('/', danhMucController.getAll);
 
 Router.use(verifyToken);

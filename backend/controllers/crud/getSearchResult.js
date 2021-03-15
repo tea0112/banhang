@@ -4,12 +4,12 @@ const getSearchResult = (model, identify, queryType, numberOfResult) => async (
   req = express.request,
   res = express.response
 ) => {
-  let query;
-  if (queryType === 'params') query = req.params[identify];
-  else if (queryType === 'query') query = req.query[identify];
-  else throw 'not found query type';
-
   try {
+    let query;
+    if (queryType === 'params') query = req.params[identify];
+    else if (queryType === 'query') query = req.query[identify];
+    else throw 'not found query type';
+
     if (query) {
       const regex = `^${query}.*`;
       await model

@@ -8,7 +8,7 @@ const ItemCatagory = ({ categories }) => {
   };
   if (categories)
     return categories.map((element) => {
-      const url = `/danh-muc/${element.url}`;
+      const url = `/${element.url}`;
       return (
         <li key={Math.random()} className="panel-block">
           <Link to={url} onClick={(e) => handleClick(e)}>
