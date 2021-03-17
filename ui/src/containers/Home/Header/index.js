@@ -47,13 +47,9 @@ const Header = () => {
         </div>
         {/* CART */}
         <div className="cart">
-          <a
-            href="#"
-            onClick={(e) => handleOpenSideBar(e)}
-            className="faShoppingCart"
-          >
+          <Link to="/cart" className="faShoppingCart">
             <i className="fas fa-shopping-cart fa-2x" />
-          </a>
+          </Link>
         </div>
         {/* BARS */}
         <div className="bars">

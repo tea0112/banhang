@@ -47,7 +47,10 @@ const Card = ({ ownCategory, urlCategory, action }) => {
         {productList
           ? productList.map((product) => {
               return (
-                <Link to={`/${urlCategory}/product/${product['_id']}`}>
+                <Link
+                  key={product['_id']}
+                  to={`/${urlCategory}/product/${product['_id']}`}
+                >
                   <div
                     className="card"
                     key={product['_id']}
@@ -84,7 +87,10 @@ const Card = ({ ownCategory, urlCategory, action }) => {
       {productList
         ? productList.docs.map((product) => {
             return (
-              <Link to={`/${urlCategory}/product/${product['_id']}`}>
+              <Link
+                key={product['_id']}
+                to={`/${urlCategory}/product/${product['_id']}`}
+              >
                 <div
                   className="card"
                   key={product['_id']}

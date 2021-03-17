@@ -1,0 +1,12 @@
+.product {
+  .right {
+    .quantity {
+      display: flex;
+      flex-direction: row;
+
+      .input {
+        width: 70px;
+      }
+    }
+  }
+}
