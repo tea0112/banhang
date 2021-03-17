@@ -1,7 +1,7 @@
 const Quyen = require('../models/Quyen');
 const add = require('./crud/add');
-const getAll = require('./crud/getAll');
+const getAllByQuery = require('./crud/getAllByQuery');
 
-exports.getAll = getAll(Quyen);
+exports.getAllByQuery = getAllByQuery(Quyen);
 
 exports.add = add(Quyen);

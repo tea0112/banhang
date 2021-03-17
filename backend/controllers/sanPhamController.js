@@ -5,8 +5,10 @@ const add = require('./crud/add');
 const deleteOne = require('./crud/deleteOne');
 const update = require('./crud/update');
 const importFile = require('./crud/import');
-const paginate = require('./crud/paginate');
 const sort = require('./crud/sort');
+const getAllByQuery = require('./crud/getAllByQuery');
+
+exports.getOne = getAllByQuery(SanPham);
 
 exports.add = add(SanPham, { ngayTao: new Date() });
 

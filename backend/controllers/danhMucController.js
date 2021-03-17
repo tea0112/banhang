@@ -1,14 +1,14 @@
 const DanhMuc = require('../models/DanhMuc');
 const getSearchResult = require('./crud/getSearchResult');
 const add = require('./crud/add');
-const getAll = require('./crud/getAll');
+const getAllByQuery = require('./crud/getAllByQuery');
 const deleteOne = require('./crud/deleteOne');
 const paginate = require('./crud/paginate');
 const SanPham = require('../models/SanPham');
 
 exports.add = add(DanhMuc);
 
-exports.getAll = getAll(DanhMuc);
+exports.getAllByQuery = getAllByQuery(DanhMuc);
 
 exports.deleteOne = deleteOne(DanhMuc, 'ten');
 

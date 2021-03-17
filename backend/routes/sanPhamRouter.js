@@ -7,6 +7,8 @@ const Router = express.Router();
 
 Router.get('/import', sanPhamController.importSanPham);
 
+Router.get('/', sanPhamController.getOne);
+
 Router.get(
   '/field/:field/order/:order/limit/:limit',
   sanPhamController.sortSanPham
@@ -27,6 +29,6 @@ Router.patch('/', sanPhamController.update);
 
 Router.delete('/:ten', sanPhamController.deleteOne);
 
-Router.get('/', sanPhamController.getSearchResult);
+Router.get('/search', sanPhamController.getSearchResult);
 
 module.exports = Router;

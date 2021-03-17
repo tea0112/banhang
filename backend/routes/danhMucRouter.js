@@ -6,7 +6,7 @@ const Router = express.Router();
 
 Router.get('/:thuocDanhMuc/page/:page', danhMucController.paginate);
 
-Router.get('/', danhMucController.getAll);
+Router.get('/', danhMucController.getAllByQuery);
 
 Router.use(verifyToken);
 

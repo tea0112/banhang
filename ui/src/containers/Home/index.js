@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Category from './Category';
 import Login from './Login';
+import Product from './Product';
 import Register from './Register';
 import './style.scss';
 import Welcome from './Welcome';
@@ -21,6 +22,9 @@ const Home = () => {
         </Route>
         <Route path="/:tenDanhMuc" exact>
           <Category />
+        </Route>
+        <Route path="/:tenDanhMuc/product/:id" exact>
+          <Product />
         </Route>
       </Switch>
     </div>

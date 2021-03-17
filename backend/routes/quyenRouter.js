@@ -3,6 +3,6 @@ const quyenController = require('../controllers/quyenController');
 
 const Router = express.Router();
 
-Router.route('/').get(quyenController.getAll).post(quyenController.add);
+Router.route('/').get(quyenController.getAllByQuery).post(quyenController.add);
 
 module.exports = Router;
