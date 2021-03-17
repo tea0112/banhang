@@ -7,10 +7,12 @@ const Welcome = () => {
   const categories = useSelector((state) => state.category.categories);
   return (
     <div className="welcome">
-      <Section
-        categories={categories || categories}
-        action={{ type: 'newest', limit: 6 }}
-      />
+      {categories ? (
+        <Section
+          categories={categories}
+          action={{ type: 'newest', limit: 6 }}
+        />
+      ) : null}
     </div>
   );
 };
