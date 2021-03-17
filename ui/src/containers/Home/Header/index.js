@@ -17,7 +17,6 @@ const Header = () => {
   const handleClose = (e) => {
     e.preventDefault();
     document.querySelector('.sidebar').style.display = 'none';
-    console.log('click');
   };
 
   const handleOpenSideBar = (e) => {

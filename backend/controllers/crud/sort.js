@@ -18,7 +18,6 @@ module.exports = (Model = mongoose.Model) => async (
 
     condition[field] = order;
 
-    console.log('hello');
     const sortedData = await Model.find({ ...query })
       .sort({ ...condition })
       .limit(limit)

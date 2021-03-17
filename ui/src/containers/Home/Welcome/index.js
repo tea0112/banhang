@@ -1,16 +1,16 @@
 import React from 'react';
-import Section from './Section';
+import { useSelector } from 'react-redux';
+import Section from '../Section';
 import './style.scss';
 
 const Welcome = () => {
+  const categories = useSelector((state) => state.category.categories);
   return (
     <div className="welcome">
-      <Section />
-      <Section />
-      <Section />
-      <Section />
-      <Section />
-      <Section />
+      <Section
+        categories={categories || categories}
+        action={{ type: 'newest', limit: 6 }}
+      />
     </div>
   );
 };

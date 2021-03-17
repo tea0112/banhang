@@ -4,7 +4,6 @@ import './style.scss';
 const ProductList = ({ tenDanhMuc }) => {
   return (
     <div>
-      <h1>{tenDanhMuc}</h1>
       <div className="box">
         <div className="dropdown is-active">
           <div className="dropdown-trigger">
@@ -14,7 +13,7 @@ const ProductList = ({ tenDanhMuc }) => {
               aria-controls="dropdown-menu"
               type="submit"
             >
-              <span>Dropdown button</span>
+              <span>Sắp xếp theo</span>
               <span className="icon is-small">
                 <i className="fas fa-angle-down" aria-hidden="true" />
               </span>
@@ -23,18 +22,14 @@ const ProductList = ({ tenDanhMuc }) => {
           <div className="dropdown-menu" id="dropdown-menu" role="menu">
             <div className="dropdown-content">
               <a href="#" className="dropdown-item">
-                Dropdown item
+                Mới nhất
               </a>
-              <a className="dropdown-item">Other dropdown item</a>
+              <a className="dropdown-item">Giá tăng dần</a>
               <a href="#" className="dropdown-item is-active">
-                Active dropdown item
+                Giá giảm dần
               </a>
               <a href="#" className="dropdown-item">
-                Other dropdown item
-              </a>
-              <hr className="dropdown-divider" />
-              <a href="#" className="dropdown-item">
-                With a divider
+                Lượt mua
               </a>
             </div>
           </div>

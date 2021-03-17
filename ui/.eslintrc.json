@@ -26,6 +26,8 @@
     "no-debugger": "warn",
     "no-alert": "off",
     "jsx-a11y/label-has-associated-control": "off",
-    "react/self-closing-comp": "warn"
+    "react/self-closing-comp": "warn",
+    "dot-notation": "off",
+    "no-restricted-syntax": "off"
   }
 }

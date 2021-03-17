@@ -21,6 +21,7 @@
     "bulma-calendar": "^6.0.9",
     "eslint-config-react-app": "^6.0.0",
     "install": "^0.13.0",
+    "lodash": "^4.17.21",
     "node-sass": "^5.0.0",
     "npm": "^7.6.3",
     "react": "^17.0.1",

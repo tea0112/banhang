@@ -14,4 +14,4 @@ exports.deleteOne = deleteOne(DanhMuc, 'ten');
 
 exports.getSearchResult = getSearchResult(DanhMuc, 'ten', 'params', 5);
 
-exports.paginate = paginate(SanPham, ['thuocDanhMuc'], 20);
+exports.paginate = paginate(SanPham, ['thuocDanhMuc'], 30);
