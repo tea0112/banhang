@@ -1,4 +1,5 @@
-import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Cart from './Cart';
 import Category from './Category';
@@ -7,10 +8,26 @@ import Product from './Product';
 import Register from './Register';
 import './style.scss';
 import Welcome from './Welcome';
+import Loading from '../../components/Loading';
+import { onSuccess } from '../../actions/status';
 
 const Home = () => {
+  const status = useSelector((state) => state.status);
+  const { isLoading } = status;
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (status.isLoading === false) {
+      setTimeout(() => {
+        onSuccess(dispatch);
+      }, 2000);
+    }
+  }, [isLoading]);
+
   return (
     <div className="home">
+      {status.isLoading && <Loading />}
       <Switch>
         <Route path="/" exact>
           <Welcome />

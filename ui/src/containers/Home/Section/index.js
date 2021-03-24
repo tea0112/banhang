@@ -1,19 +1,33 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import _, { set } from 'lodash';
+import { useDispatch, useSelector } from 'react-redux';
 import Card from './Card';
 import './style.scss';
+import { setCart } from '../../../actions/cart';
 
 const Section = ({ categories, action }) => {
   const [page, setPage] = useState(1);
   const [cardPage, setCardPage] = useState([]);
+  const cart = useSelector((state) => state.cart);
+  const prevCart = useRef();
+  const user = useSelector((state) => state.user);
+  const email =
+    user.isLogin && useSelector((state) => state.user.credentials.email);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    if (action.type === 'paginate' && categories.length === 1) {
-      setPage(action.page);
+    if (!_.isEqual(cart, prevCart.current)) {
+      if (action.type === 'paginate' && categories.length === 1) {
+        setPage(action.page);
+      }
+      if (user.isLogin) {
+        setCart(dispatch, email);
+        prevCart.current = cart;
+      }
     }
-  }, [action]);
+  }, [action, cart]);
 
   const handleMore = (e) => {
     e.preventDefault();
@@ -46,7 +60,7 @@ const Section = ({ categories, action }) => {
           <div className="my-button">
             {action.type === 'newest' ? (
               <Link className="button is-link" to={elm.url}>
-                <p>Xem Thêm 😏</p>
+                <p>Xem Thêm</p>
               </Link>
             ) : (
               <button
@@ -54,7 +68,7 @@ const Section = ({ categories, action }) => {
                 onClick={(e) => handleMore(e)}
                 type="button"
               >
-                <p>Xem Thêm 😏</p>
+                <p>Xem Thêm</p>
               </button>
             )}
           </div>

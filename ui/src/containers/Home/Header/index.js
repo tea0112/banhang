@@ -1,3 +1,4 @@
+import { useDispatch, useSelector } from 'react-redux';
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -10,9 +11,12 @@ import { Link } from 'react-router-dom';
 import './style.scss';
 import useCategory from './useCategory';
 import ItemCatagory from '../../../components/ItemCatagory';
+import { setCart } from '../../../actions/cart';
 
 const Header = () => {
   const categories = useCategory();
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
 
   const handleClose = (e) => {
     e.preventDefault();
@@ -22,6 +26,10 @@ const Header = () => {
   const handleOpenSideBar = (e) => {
     e.preventDefault();
     document.querySelector('.sidebar').style.display = 'block';
+  };
+
+  const handleGetCart = () => {
+    return user.isLogin && setCart(dispatch, user.credentials.email);
   };
 
   return (
@@ -47,7 +55,11 @@ const Header = () => {
         </div>
         {/* CART */}
         <div className="cart">
-          <Link to="/cart" className="faShoppingCart">
+          <Link
+            to="/cart"
+            className="faShoppingCart"
+            onClick={() => handleGetCart()}
+          >
             <i className="fas fa-shopping-cart fa-2x" />
           </Link>
         </div>

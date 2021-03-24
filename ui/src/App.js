@@ -1,5 +1,6 @@
 import './App.scss';
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 import Home from './containers/Home';
 import Header from './containers/Home/Header';

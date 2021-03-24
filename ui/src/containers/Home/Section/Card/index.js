@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import './style.scss';
 import _ from 'lodash';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { onLoading, onSuccess } from '../../../../actions/status';
 
 const getNewestProduct = (category, limit) => {
   return axios
@@ -21,9 +23,42 @@ const getPaginatedProduct = (category, page) => {
 };
 
 const Card = ({ ownCategory, urlCategory, action }) => {
+  const user = useSelector((state) => state.user);
   const type = ['paginate', 'newest'];
-
+  const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart);
   const [productList, setProductList] = useState();
+
+  const handleAddToCart = (product) => {
+    onLoading(dispatch);
+
+    for (const item of cart) {
+      if (item['product'] === product['_id']) {
+        onSuccess(dispatch);
+        alert('Sản phẩm đã tồn tại trong giỏ hàng');
+        return null;
+      }
+    }
+    return axios
+      .post(
+        `/api/v1/cart`,
+        {
+          email: user.credentials.email,
+          product: product['_id'],
+        },
+        {
+          headers: { Authorization: localStorage.getItem('token') },
+        }
+      )
+      .then(() => {
+        onSuccess(dispatch);
+        alert('Đã thêm vào giỏ');
+      });
+  };
+
+  const redirectToLogin = () => {
+    location.replace('login');
+  };
 
   useEffect(() => {
     const list = async (categoryName) => {
@@ -47,14 +82,14 @@ const Card = ({ ownCategory, urlCategory, action }) => {
         {productList
           ? productList.map((product) => {
               return (
-                <Link
+                <div
+                  className="card"
                   key={product['_id']}
-                  to={`/${urlCategory}/product/${product['_id']}`}
+                  style={{ display: 'inline-block' }}
                 >
-                  <div
-                    className="card"
+                  <Link
                     key={product['_id']}
-                    style={{ display: 'inline-block' }}
+                    to={`/${urlCategory}/product/${product['_id']}`}
                   >
                     <div className="card-image">
                       <figure className="image">
@@ -64,19 +99,32 @@ const Card = ({ ownCategory, urlCategory, action }) => {
                         />
                       </figure>
                     </div>
-                    <div className="card-content">
-                      <div className="media-content">
+                  </Link>
+                  <div className="card-content">
+                    <div className="media-content">
+                      <Link
+                        key={product['_id']}
+                        to={`/${urlCategory}/product/${product['_id']}`}
+                      >
                         <div className="title-product">
                           <b>{product.ten}</b>
                         </div>
-                        <p className="">{product.gia}₫</p>
-                        <button className="button is-success" type="button">
-                          Thêm Giỏ
-                        </button>
-                      </div>
+                      </Link>
+                      <p className="">{product.gia}₫</p>
+                      <button
+                        className="button is-success"
+                        type="button"
+                        onClick={
+                          user.isLogin
+                            ? () => handleAddToCart(product)
+                            : () => redirectToLogin()
+                        }
+                      >
+                        Thêm Giỏ
+                      </button>
                     </div>
                   </div>
-                </Link>
+                </div>
               );
             })
           : null}
@@ -87,14 +135,14 @@ const Card = ({ ownCategory, urlCategory, action }) => {
       {productList
         ? productList.docs.map((product) => {
             return (
-              <Link
+              <div
+                className="card"
                 key={product['_id']}
-                to={`/${urlCategory}/product/${product['_id']}`}
+                style={{ display: 'inline-block' }}
               >
-                <div
-                  className="card"
+                <Link
                   key={product['_id']}
-                  style={{ display: 'inline-block' }}
+                  to={`/${urlCategory}/product/${product['_id']}`}
                 >
                   <div className="card-image">
                     <figure className="image">
@@ -104,19 +152,32 @@ const Card = ({ ownCategory, urlCategory, action }) => {
                       />
                     </figure>
                   </div>
-                  <div className="card-content">
-                    <div className="media-content">
+                </Link>
+                <div className="card-content">
+                  <div className="media-content">
+                    <Link
+                      key={product['_id']}
+                      to={`/${urlCategory}/product/${product['_id']}`}
+                    >
                       <div className="title-product">
                         <b>{product.ten}</b>
                       </div>
-                      <p className="">{product.gia}₫</p>
-                      <button className="button is-success" type="button">
-                        Thêm Giỏ
-                      </button>
-                    </div>
+                    </Link>
+                    <p className="">{product.gia}₫</p>
+                    <button
+                      className="button is-success"
+                      type="button"
+                      onClick={
+                        user.isLogin
+                          ? () => handleAddToCart(product)
+                          : () => redirectToLogin()
+                      }
+                    >
+                      Thêm Giỏ
+                    </button>
                   </div>
                 </div>
-              </Link>
+              </div>
             );
           })
         : null}

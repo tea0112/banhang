@@ -1,17 +1,48 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import './style.scss';
+import { onLoading, onSuccess } from '../../../actions/status';
 
 const Product = () => {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
   const params = useParams();
   const [product, setProduct] = useState();
+  const cart = useSelector((state) => state.cart);
 
   useEffect(async () => {
     await axios.get(`/api/v1/sanpham?_id=${params.id}`).then((res) => {
       setProduct(res.data[0]);
     });
   }, []);
+
+  const handleAddToCart = (myproduct) => {
+    onLoading(dispatch);
+    for (const item of cart) {
+      if (item['product'] === myproduct['_id']) {
+        onSuccess(dispatch);
+        alert('Sản phẩm đã tồn tại trong giỏ hàng');
+        return null;
+      }
+    }
+    return axios
+      .post(
+        `/api/v1/cart`,
+        {
+          email: user.credentials.email,
+          product: myproduct['_id'],
+        },
+        {
+          headers: { Authorization: localStorage.getItem('token') },
+        }
+      )
+      .then(() => {
+        onSuccess(dispatch);
+        alert('Đã thêm vào giỏ');
+      });
+  };
 
   return (
     <div className="product">
@@ -49,7 +80,11 @@ const Product = () => {
               <h3>{product ? product.ten : null}</h3>
               Giá <i>{product ? product.gia : null} ₫</i>
               <div className="add-to-card">
-                <button className="button" type="button">
+                <button
+                  className="button"
+                  type="button"
+                  onClick={() => handleAddToCart(product)}
+                >
                   Thêm vào rọ
                 </button>
               </div>

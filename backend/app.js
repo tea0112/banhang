@@ -1,12 +1,13 @@
 const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+const verifyToken = require('./middlewares/verifyToken');
 const sanPhamRouter = require('./routes/sanPhamRouter');
 const authRouter = require('./routes/authRouter');
-const verifyToken = require('./middlewares/verifyToken');
 const quyenRouter = require('./routes/quyenRouter');
 const nguoiDungRouter = require('./routes/nguoiDungRouter');
 const danhMucRouter = require('./routes/danhMucRouter');
+const cartRouter = require('./routes/cartRouter');
 
 const app = express();
 
@@ -25,5 +26,7 @@ app.use('/api/v1/quyen', verifyToken, quyenRouter);
 app.use('/api/v1/danhmuc', danhMucRouter);
 
 app.use('/api/v1/sanpham', sanPhamRouter);
+
+app.use('/api/v1/cart', cartRouter);
 
 module.exports = app;
