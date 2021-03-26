@@ -8,6 +8,7 @@ import DeleteCatagory from './Catagory/Delete';
 import AddProduct from './Product/Add';
 import UpdateProduct from './Product/Update';
 import DeleteProduct from './Product/Delete';
+import Order from './Order';
 
 const Admin = () => {
   return (
@@ -16,6 +17,10 @@ const Admin = () => {
         {/* User */}
         <Route path="/admin/user" exact>
           <UserAdmin />
+        </Route>
+        {/* Order */}
+        <Route path="/admin/order" exact>
+          <Order />
         </Route>
         {/* Category */}
         <Route path="/admin/category/add" exact>

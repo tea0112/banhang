@@ -11,13 +11,13 @@ const App = () => {
   return (
     <div className="App">
       <Switch>
-        <Route path="/">
-          <Header />
-          <Home />
-        </Route>
         <Route path="/admin">
           <HeaderAdmin />
           <Admin />
+        </Route>
+        <Route path="/">
+          <Header />
+          <Home />
         </Route>
       </Switch>
     </div>

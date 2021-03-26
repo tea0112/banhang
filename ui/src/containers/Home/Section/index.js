@@ -13,8 +13,7 @@ const Section = ({ categories, action }) => {
   const cart = useSelector((state) => state.cart);
   const prevCart = useRef();
   const user = useSelector((state) => state.user);
-  const email =
-    user.isLogin && useSelector((state) => state.user.credentials.email);
+  const email = user.credentials && user.credentials.email;
   const dispatch = useDispatch();
 
   useEffect(() => {

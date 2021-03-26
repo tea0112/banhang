@@ -1,8 +1,11 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './style.scss';
 
 const HeaderAdmin = () => {
+  const user = useSelector((state) => state.user);
+
   const onCloseSidebar = (e) => {
     e.preventDefault();
     document.querySelector('.sidebar').style.display = 'none';
@@ -37,6 +40,10 @@ const HeaderAdmin = () => {
     else subCatagory.style.display = 'block';
   };
 
+  if (user.credentials.role === 'member') {
+    alert('Bạn không phải admin');
+    location.replace('/');
+  }
   return (
     <div className="header-admin">
       <nav className="nav-admin">
@@ -81,6 +88,9 @@ const HeaderAdmin = () => {
             <Link to="/admin/product/update">sửa sản phẩm</Link>
             <Link to="/admin/product/delete">xoá sản phẩm</Link>
           </div>
+        </div>
+        <div className="order">
+          <Link to="/admin/order">Đặt Hàng</Link>
         </div>
       </div>
     </div>

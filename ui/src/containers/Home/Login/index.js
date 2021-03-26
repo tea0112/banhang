@@ -1,6 +1,6 @@
 import { makeStyles, TextField } from '@material-ui/core';
 import axios from 'axios';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import './style.scss';
@@ -12,7 +12,6 @@ const authenticate = (dispatch) => {
 
   axios.post('/api/v1/auth/login', { email, password }).then((res) => {
     localStorage.setItem('token', res.data.accessToken);
-    changeLoginState(dispatch);
     setCredentials(dispatch);
   });
 };
@@ -21,13 +20,23 @@ const Login = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
 
+  // useEffect Hook
+
+  useEffect(() => {
+    if (user.credentials) {
+      location.replace('/');
+      changeLoginState(dispatch);
+    }
+  }, [user]);
+
   const handleAuthenticate = (e) => {
     e.preventDefault();
     authenticate(dispatch);
   };
 
-  if (user.isLogin) return <Redirect to="/" />;
-  return (
+  return user.isLogin ? (
+    location.replace('/profile')
+  ) : (
     <div className="login">
       <form className="box">
         <div className="field">
@@ -70,7 +79,7 @@ const Login = () => {
                 handleAuthenticate(e);
               }}
             >
-              Submit
+              Đăng Nhập
             </button>
           </div>
         </div>

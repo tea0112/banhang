@@ -9,6 +9,7 @@ const Cart = () => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [productList, setProductList] = useState([]);
   const cart = useSelector((state) => state.cart);
+  const user = useSelector((state) => state.user);
 
   useEffect(async () => {
     const list = [];
@@ -30,7 +31,39 @@ const Cart = () => {
     setTotalPrice(total);
   };
 
-  return (
+  // ONCLICK
+
+  const handleOrder = () => {
+    const products = [];
+
+    composedProduct.forEach((elm) =>
+      products.push({
+        product: elm['_id'],
+        quantity: elm.quantity,
+      })
+    );
+
+    axios
+      .post(
+        '/api/v1/orders',
+        {
+          email: user.credentials.email,
+          products,
+          totalPrice,
+        },
+        {
+          headers: { Authorization: localStorage.getItem('token') },
+        }
+      )
+      .then((res) => {
+        if (res.status === 201) {
+          alert('Đặt hàng thành công!!');
+          location.replace('/');
+        }
+      });
+  };
+
+  return user.isLogin ? (
     <div className="cart">
       <div className="List">
         {productList &&
@@ -48,11 +81,18 @@ const Cart = () => {
       </div>
       <div className="box total">
         <h1 className="title is-1">Thành tiền: {totalPrice && totalPrice}</h1>
-        <button className="button is-success" type="button">
+        <button
+          className="button is-success"
+          type="button"
+          onClick={handleOrder}
+          disabled={!totalPrice}
+        >
           Đặt Hàng
         </button>
       </div>
     </div>
+  ) : (
+    location.replace('/login')
   );
 };
 

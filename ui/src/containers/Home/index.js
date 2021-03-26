@@ -10,6 +10,7 @@ import './style.scss';
 import Welcome from './Welcome';
 import Loading from '../../components/Loading';
 import { onSuccess } from '../../actions/status';
+import Profile from './Profile';
 
 const Home = () => {
   const status = useSelector((state) => state.status);
@@ -37,6 +38,9 @@ const Home = () => {
         </Route>
         <Route path="/login">
           <Login />
+        </Route>
+        <Route path="/profile">
+          <Profile />
         </Route>
         <Route path="/register">
           <Register />

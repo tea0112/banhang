@@ -8,6 +8,7 @@ const quyenRouter = require('./routes/quyenRouter');
 const nguoiDungRouter = require('./routes/nguoiDungRouter');
 const danhMucRouter = require('./routes/danhMucRouter');
 const cartRouter = require('./routes/cartRouter');
+const orderRouter = require('./routes/orderRouter');
 
 const app = express();
 
@@ -28,5 +29,7 @@ app.use('/api/v1/danhmuc', danhMucRouter);
 app.use('/api/v1/sanpham', sanPhamRouter);
 
 app.use('/api/v1/cart', cartRouter);
+
+app.use('/api/v1/orders', orderRouter);
 
 module.exports = app;

@@ -29,7 +29,9 @@ const Header = () => {
   };
 
   const handleGetCart = () => {
-    return user.isLogin && setCart(dispatch, user.credentials.email);
+    if (user.isLogin === true && user.credentials)
+      return setCart(dispatch, user.credentials.email);
+    return null;
   };
 
   return (
